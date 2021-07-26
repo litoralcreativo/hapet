@@ -51,12 +51,17 @@ public class FileManager : MonoBehaviour
         string fileName = "";
         if (patientName != "")
         {
-            fileName = patientName + " (" + System.DateTime.Today.Date.Day + System.DateTime.Today.Date.Month + System.DateTime.Today.Date.Year + "-" + System.DateTime.Now.Hour + System.DateTime.Now.Minute + System.DateTime.Now.Second + ")";
+            //fileName = patientName + " (" + System.DateTime.Today.Date.Day + System.DateTime.Today.Date.Month + System.DateTime.Today.Date.Year + "-" + System.DateTime.Now.Hour + System.DateTime.Now.Minute + System.DateTime.Now.Second + ")";
         }
         else
         {
-            fileName = "HAPET (" + System.DateTime.Today.Date.Day + System.DateTime.Today.Date.Month + System.DateTime.Today.Date.Year + "-" + System.DateTime.Now.Hour + System.DateTime.Now.Minute + System.DateTime.Now.Second + ")";
+            //fileName = "HAPET (" + System.DateTime.Today.Date.Day + System.DateTime.Today.Date.Month + System.DateTime.Today.Date.Year + "-" + System.DateTime.Now.Hour + System.DateTime.Now.Minute + System.DateTime.Now.Second + ")";
         }
+
+        /* ACTUALIZACION NOMBRE ARCHIVO 24/07/21*/
+        fileName = path;
+
+
         /*
         var extensionList = new[] {
         new ExtensionFilter("Pdf", "pdf"),
@@ -93,7 +98,6 @@ public class FileManager : MonoBehaviour
         if (path != "")
         {
             player.url = path;
-            print(path);
             //player.Play();  
         }
     }

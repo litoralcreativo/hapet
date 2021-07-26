@@ -17,14 +17,14 @@ public class GridInfoItemScript : MonoBehaviour
             _text.fontStyle = FontStyle.Normal;
             //text.fontStyle = FontStyles.Normal;
             //text.text = value.ToString("#.###") + " ms";
-            _text.text = value.ToString("#.###") + " ms";
+            _text.text = value.ToString("F3") + " seg";
         }
         else
         {
             _text.fontStyle = FontStyle.Bold;
             //text.fontStyle = FontStyles.Bold;
             //text.text = "Avr: " + value.ToString("#.###") + " ms";
-            _text.text = "Avr: " + value.ToString("#.###") + " ms";
+            _text.text = "Avr: " + value.ToString("F3") + " seg";
         }
     }
 

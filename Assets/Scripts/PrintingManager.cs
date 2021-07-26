@@ -6,6 +6,8 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System;
 
+
+
 public class PrintingManager : MonoBehaviour
 {
     [ShowOnly] public string path = null;
@@ -33,6 +35,7 @@ public class PrintingManager : MonoBehaviour
     public GridInfoPanelScript SymmetryPass;
     public GridInfoPanelScript SymmetryCycle;
 
+    public UnityEngine.UI.Toggle openFileBeforeExport;
 
     public void GenerateFile() 
     {
@@ -44,9 +47,6 @@ public class PrintingManager : MonoBehaviour
 
         // VideoPath
         videoPath = Path.GetFileName(fileManager.path);
-
-        print("Path: " + path);
-        print("Exten: " + extension);
 
         if (extension == "pdf")
         {
@@ -702,14 +702,17 @@ public class PrintingManager : MonoBehaviour
                 document.Close();
                 writer.Close();
 
-                PrintFiles();
+                // opens the file if the user.config allows it
+                if (openFileBeforeExport.isOn)
+                {
+                    PrintFiles();
+                }
             }
         }
     }
 
     void PrintFiles()
     {
-        Debug.Log(path);
         if (path == null)
             return;
 
@@ -727,7 +730,6 @@ public class PrintingManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("file not found");
             return;
         }
         System.Diagnostics.Process process = new System.Diagnostics.Process();

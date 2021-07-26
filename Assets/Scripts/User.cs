@@ -14,7 +14,8 @@ public class User : MonoBehaviour
 
     // config panel data
     [ShowOnly] public bool showTooltips = false;
-    [ShowOnly] public bool showMonitorLed = false;
+    [ShowOnly] public bool showMonitorLed = true;
+    [ShowOnly] public bool openFileBeforeExport = false;
     [ShowOnly] public string userMacAddress;
     [ShowOnly] public string productID;
 
@@ -58,7 +59,6 @@ public class User : MonoBehaviour
     public void SaveData()
     {
         SaveSystem.SaveUserData(this);
-        print("Save Data");
     }
 
     public void LoadData()
@@ -69,6 +69,7 @@ public class User : MonoBehaviour
         premiumUser = data.premiumState;
         showTooltips = data.showTooltips;
         showMonitorLed = data.showMonitorLed;
+        openFileBeforeExport = data.openFileBeforeExport;
         productID = data.productID;
         currentLicence = (LicenceManager.Licence)data.licenceIndex;
     }
@@ -78,7 +79,7 @@ public class User : MonoBehaviour
         userName = "Usuario";
         showTooltips = true;
         showMonitorLed = true;
-        Debug.Log("Data Cleared");
+        openFileBeforeExport = false;
         SaveData();
     }
 

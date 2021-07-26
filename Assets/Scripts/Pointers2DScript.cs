@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
+using System;
 
 public class Pointers2DScript : MonoBehaviour
 {
@@ -135,6 +136,28 @@ public class Pointers2DScript : MonoBehaviour
         pointsShown = !pointsShown;
     }
 
+    public void DeleteAllPoints()
+    {
+        List <GameObject> objs = new List<GameObject>();
+        foreach (Transform tr in containerOfPoints.transform)
+        {
+            Debug.Log(tr);
+            Point2DElement p2de = tr.GetComponent<Point2DElement>();
+            if (p2de != null)
+            {
+                objs.Add(tr.gameObject);
+                
+            }
+        }
+        foreach (GameObject go in objs)
+        {
+            go.transform.parent = null;
+            Destroy(go);
+        }
+
+        UpdatePoints();
+    }
+
     public void UpdatePoints()
     {
         points.Clear();
@@ -205,7 +228,6 @@ public class Pointers2DScript : MonoBehaviour
         GameObject newPointer = Instantiate(prefabPointer2DElement, containerOfPoints.transform);
 
         float posX = Screen.width * (float)vPlayer.frame / (float)vPlayer.frameCount - (Screen.width / 2);
-
         newPointer.GetComponent<RectTransform>().localPosition = new Vector2(posX, 0);
         newPointer.GetComponent<Point2DElement>().CreateEvent(Foot.right, SimpleEventType.contact);
         newPointer.GetComponent<Point2DElement>().vplayer = vPlayer;

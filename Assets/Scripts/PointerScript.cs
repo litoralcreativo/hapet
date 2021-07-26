@@ -15,7 +15,6 @@ public class PointerScript : MonoBehaviour
 
     public bool smallStep;
 
-    public ElementPlacingScript eps;
 
     private Vector2 _cursPos;
     private bool listeningCursor = false;
@@ -26,10 +25,6 @@ public class PointerScript : MonoBehaviour
     }
     private void Update()
     {
-        if (eps.active)
-            ableToPoint = true;
-        else
-            ableToPoint = false;
 
 
         if (ableToPoint)

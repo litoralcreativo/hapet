@@ -10,7 +10,8 @@ public class UserData
     public int licenceIndex;
     public bool showTooltips;
     public bool showMonitorLed;
-    
+    public bool openFileBeforeExport;
+
 
     public string productID;
 
@@ -23,6 +24,7 @@ public class UserData
         //Debug.Log((int)user.currentLicence);
         showTooltips = user.showTooltips;
         showMonitorLed = user.showMonitorLed;
+        openFileBeforeExport = user.openFileBeforeExport;
         productID = user.productID;
 
     }

@@ -21,6 +21,7 @@ public class ConfigManager : MonoBehaviour
     public GameObject quitPanel;
 
     public Toggle monitorLedsToogle;
+    public Toggle fileOpenerToogle;
     public ShowingPanelScript monitorLeds;
 
     private void Start()
@@ -35,6 +36,7 @@ public class ConfigManager : MonoBehaviour
             monitorLedsToogle.isOn = user.showMonitorLed;
             userName.text = user.userName;
             productID.text = user.productID;
+            fileOpenerToogle.isOn = user.openFileBeforeExport;
         }
         UpdateTooltipState();
         UpdateLicenceTextOnCOnfig();
@@ -114,6 +116,12 @@ public class ConfigManager : MonoBehaviour
         return true;
     }
 
+    public void UpdateFileOpener()
+    {
+        user.openFileBeforeExport = fileOpenerToogle.isOn;
+
+    }
+
     private void OnApplicationQuit()
     {
         quitPanel.SetActive(true);
@@ -121,4 +129,5 @@ public class ConfigManager : MonoBehaviour
         Application.wantsToQuit += dontQuit;
 
     }
+
 }

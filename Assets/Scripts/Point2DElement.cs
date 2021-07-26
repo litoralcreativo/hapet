@@ -165,6 +165,8 @@ public class Point2DElement : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         {
             arrows[0].color = rightColor;
             arrows[1].color = rightColor;
+            footImg.sprite = sprites.Find(x => x.name == "FootR");
+
         }
     }
 
@@ -185,7 +187,6 @@ public class Point2DElement : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             arrows[0].color = leftColor;
             arrows[1].color = leftColor;
         }
-        print(transform.parent.transform.parent.GetComponent<Pointers2DScript>());
         parentOfParent = transform.parent.transform.parent.GetComponent<Pointers2DScript>();
         parentOfParent.UpdatePoints();
     }
